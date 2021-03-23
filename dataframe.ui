@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1280</width>
+    <height>686</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>查看数据集</string>
+  </property>
+  <widget class="QTableView" name="tableView">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>290</y>
+     <width>1281</width>
+     <height>511</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_back">
+   <property name="geometry">
+    <rect>
+     <x>1150</x>
+     <y>10</y>
+     <width>113</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>返回</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboBox_data">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>20</y>
+     <width>251</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string notr="true">请选择</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>茅台</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>同花顺</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>万科</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>振业</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>原野</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>锦兴</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>金田</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>发展</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>达声</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>宝安</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>安达</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>恒邦股份</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QLabel" name="label_data">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>20</y>
+     <width>71</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>选择数据集</string>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="groupBox_1">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>40</y>
+     <width>391</width>
+     <height>241</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>股价</string>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="groupBox_3">
+   <property name="geometry">
+    <rect>
+     <x>870</x>
+     <y>40</y>
+     <width>391</width>
+     <height>241</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>市值</string>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="groupBox_2">
+   <property name="geometry">
+    <rect>
+     <x>430</x>
+     <y>40</y>
+     <width>411</width>
+     <height>241</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>成交量</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

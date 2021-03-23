@@ -1,0 +1,174 @@
+import tensorflow as tf
+import numpy as np
+import math
+
+def fun(TIME_STEPS,
+    BATCH_SIZE,
+    CELL_SIZE,
+    LSTM_LAYER,
+    NN_LAYER,
+    restorePath,
+    data,
+    NN_CELLSIZE,
+    LSTM_OUTPUT,
+    LR=0.006,
+    is_test=True):
+
+    tf.reset_default_graph()
+    OUTPUT_SIZE=1
+    data = np.array(data)
+
+    index = []
+    for i in range(len(data)):
+        if 0 in data[i]:
+            index.append(i)
+    for i in range(len(index)):
+        data = np.delete(data, index[len(index) - i - 1], 0)
+
+    nanindex = []
+    for i in range(len(data[0])):
+        if np.isnan(data[0][i]):
+            nanindex.append(i)
+    for i in range(len(nanindex)):
+        data = np.delete(data, nanindex[len[nanindex] - i - 1], 1)
+
+    n1 = len(data[0]) - 1
+
+    INPUT_SIZE = n1+1
+
+    class LSTMRNN(object):
+        def __init__(self, n_steps, input_size, output_size, cell_size, batch_size, lstm_layer, nn_layer, lr,  nn_sellsize, lstm_output):
+            self.n_steps = n_steps
+            self.input_size = input_size
+            self.output_size = output_size
+            self.cell_size = cell_size
+            self.batch_size = batch_size
+            self.lstm_layer = lstm_layer
+            self.nn_cellsize = nn_sellsize
+            self.lstm_output = lstm_output
+            self.lr = lr
+            with tf.name_scope('inputs'):
+                self.xs = tf.placeholder(tf.float32, [None, n_steps, input_size], name='xs')
+                self.ys = tf.placeholder(tf.float32, [None, output_size], name='ys')
+                self.keep_prob_lstm = tf.placeholder(tf.float32,name='kpl')
+                self.keep_prob_nn = tf.placeholder(tf.float32,name='kpn')
+            with tf.variable_scope('in_hidden'):
+                self.add_input_layer()
+            with tf.variable_scope('LSTM_cell'):
+                self.add_cell()
+            with tf.variable_scope('out_hidden'):
+                self.add_output_layer()
+            with tf.variable_scope('out1'):
+                self.add_nn_layer(inputs=self.lstm_pred, in_size=self.n_steps * self.lstm_output,
+                                  out_size=self.nn_cellsize, activation_function=tf.nn.relu)
+            for i in range(nn_layer - 1):
+                with tf.variable_scope(str(i)):
+                    self.add_nn_layer(inputs=self.pred, in_size=self.nn_cellsize, out_size=self.nn_cellsize,
+                                      activation_function=tf.nn.relu)
+            with tf.variable_scope('out3'):
+                self.add_nn_layer(inputs=self.pred, in_size=self.nn_cellsize, out_size=1, activation_function=None)
+            with tf.name_scope('cost'):
+                self.compute_cost()
+            with tf.name_scope('train'):
+                self.train_op = tf.train.AdamOptimizer(self.lr).minimize(self.cost)
+
+        def add_input_layer(self,):
+            l_in_x = tf.reshape(self.xs, [-1, self.input_size], name='2_2D')  # (batch*n_step, in_size)
+            # Ws (in_size, cell_size)
+            Ws_in = self._weight_variable([self.input_size, self.cell_size])
+            # bs (cell_size, )
+            bs_in = self._bias_variable([self.cell_size,])
+            # l_in_y = (batch * n_steps, cell_size)
+            with tf.name_scope('Wx_plus_b'):
+                l_in_y = tf.matmul(l_in_x, Ws_in) + bs_in
+            # reshape l_in_y ==> (batch, n_steps, cell_size)
+            self.l_in_y = tf.reshape(l_in_y, [-1, self.n_steps, self.cell_size], name='2_3D')
+
+        def add_cell(self):
+            lstm_cell = tf.contrib.rnn.BasicLSTMCell(self.cell_size, forget_bias=1.0, state_is_tuple=True)
+            multi_layer_cell = tf.contrib.rnn.MultiRNNCell([lstm_cell]*self.lstm_layer)
+            cell= tf.contrib.rnn.DropoutWrapper(multi_layer_cell,input_keep_prob=self.keep_prob_lstm)
+            with tf.name_scope('initial_state'):
+                self.cell_init_state = cell.zero_state(self.batch_size, dtype=tf.float32)
+            self.cell_outputs, self.cell_final_state = tf.nn.dynamic_rnn(
+                cell, self.l_in_y, initial_state=self.cell_init_state, time_major=False)
+
+        def add_output_layer(self):
+            # shape = (batch * steps, cell_size)
+            l_out_x = tf.reshape(self.cell_outputs, [-1, self.cell_size], name='2_2D')
+            Ws_out = self._weight_variable([self.cell_size, self.lstm_output])
+            bs_out = self._bias_variable([self.lstm_output, ])
+            # shape = (batch * steps, output_size)
+            with tf.name_scope('Wx_plus_b'):
+                self.lstm_pred = tf.matmul(l_out_x, Ws_out) + bs_out
+                self.lstm_pred = tf.reshape(self.lstm_pred, [-1, self.n_steps * self.lstm_output])
+
+        def add_nn_layer(self,inputs,in_size,out_size,activation_function=None):
+            #tf.sqrt(2/in_size)是梯度爆炸/消失的处理方法
+            #inputsnn_in = tf.reshape(self.lstm_pred,[-1,in_size])
+            Weights = tf.Variable(tf.random_normal([in_size,out_size])*tf.sqrt(2/in_size))
+            biases = tf.Variable(tf.zeros([1,out_size])) + 0.1
+            Wx_plus_b = tf.matmul(inputs,Weights) + biases
+            Wx_plus_b = tf.nn.dropout(Wx_plus_b, self.keep_prob_nn)
+            if activation_function == None:
+                self.pred = Wx_plus_b
+            else:
+                self.pred = activation_function(Wx_plus_b)
+
+        def compute_cost(self):
+
+            with tf.name_scope('average_cost'):
+                self.cost = tf.reduce_mean(tf.square(tf.reshape(self.pred, [-1]) - tf.reshape(self.ys, [-1])))
+
+        def _weight_variable(self, shape, name='weights'):
+            initializer = tf.random_normal_initializer(mean=0., stddev=1.,)
+            return tf.get_variable(shape=shape, initializer=initializer, name=name)
+
+        def _bias_variable(self, shape, name='biases'):
+            initializer = tf.constant_initializer(0.1)
+            return tf.get_variable(name=name, shape=shape, initializer=initializer)
+
+    model = LSTMRNN(TIME_STEPS, INPUT_SIZE, OUTPUT_SIZE, CELL_SIZE, BATCH_SIZE, LSTM_LAYER, NN_LAYER,LR, NN_CELLSIZE, LSTM_OUTPUT)
+    sess = tf.Session()
+
+    init = tf.global_variables_initializer()
+    saver = tf.train.Saver(max_to_keep=1)
+    sess.run(init)
+
+
+    if is_test:
+        model_file = tf.train.latest_checkpoint(restorePath)
+        saver.restore(sess,model_file)
+        n2 = len(data)
+
+        train_end_index = math.floor(len(data) * 0.9)
+        data_test = data[train_end_index + 1:]
+        mean_test = np.mean(data_test, axis=0)
+        std_test = np.std(data_test, axis=0)
+
+
+        testdata = data[n2 - BATCH_SIZE - TIME_STEPS:]
+
+
+        testdata = (testdata - mean_test) / std_test
+
+        mydata = []
+
+        for i in range(len(testdata) - TIME_STEPS):
+            x = testdata[i:i + TIME_STEPS, :]
+            mydata.append(x.tolist())
+
+
+
+        feed_dict = {
+            model.xs: mydata,
+            model.keep_prob_lstm: 1,
+            model.keep_prob_nn: 1
+        }
+
+        pred = sess.run(
+            model.pred,
+            feed_dict=feed_dict)
+        pred = pred.reshape((-1))
+        pred = np.array(pred) * std_test[n1] + mean_test[n1]
+        return pred[BATCH_SIZE-1]

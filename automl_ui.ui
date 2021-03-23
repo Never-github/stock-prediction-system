@@ -1,0 +1,1288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AutoForm</class>
+ <widget class="QWidget" name="AutoForm">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1280</width>
+    <height>686</height>
+   </rect>
+  </property>
+  <property name="font">
+   <font>
+    <family>Heiti SC</family>
+    <pointsize>18</pointsize>
+   </font>
+  </property>
+  <property name="contextMenuPolicy">
+   <enum>Qt::DefaultContextMenu</enum>
+  </property>
+  <property name="windowTitle">
+   <string>自动调参模式</string>
+  </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget{
+background-color:white;
+}</string>
+  </property>
+  <widget class="QTextBrowser" name="textBrowser">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>520</y>
+     <width>1261</width>
+     <height>261</height>
+    </rect>
+   </property>
+   <property name="toolTip">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;自动调试的参数信息&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QTextBrowser{
+background-color:rgba(231, 255, 232, 92);
+}</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::Panel</enum>
+   </property>
+   <property name="lineWidth">
+    <number>9</number>
+   </property>
+   <property name="midLineWidth">
+    <number>8</number>
+   </property>
+   <property name="cursorWidth">
+    <number>1</number>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_hands">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>70</y>
+     <width>111</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Andale Mono</family>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+background-color:rgb(242, 249, 255);
+}</string>
+   </property>
+   <property name="text">
+    <string>返回手动模式</string>
+   </property>
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+   <property name="autoDefault">
+    <bool>false</bool>
+   </property>
+   <property name="default">
+    <bool>false</bool>
+   </property>
+   <property name="flat">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_update">
+   <property name="geometry">
+    <rect>
+     <x>340</x>
+     <y>70</y>
+     <width>111</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Andale Mono</family>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+background-color:rgb(242, 249, 255);
+}</string>
+   </property>
+   <property name="text">
+    <string>更新参数空间</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="gridLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>180</y>
+     <width>541</width>
+     <height>311</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="6" column="2">
+     <layout class="QHBoxLayout" name="horizontalLayout_14">
+      <item>
+       <widget class="QRadioButton" name="radioButton_kplstm1">
+        <property name="font">
+         <font>
+          <family>Yuppy SC</family>
+         </font>
+        </property>
+        <property name="text">
+         <string>增加</string>
+        </property>
+        <property name="autoRepeat">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radioButton_lkplstm2">
+        <property name="font">
+         <font>
+          <family>Yuppy SC</family>
+         </font>
+        </property>
+        <property name="text">
+         <string>删除</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="4" column="2">
+     <layout class="QHBoxLayout" name="horizontalLayout_12">
+      <item>
+       <widget class="QRadioButton" name="radioButton_iter1">
+        <property name="font">
+         <font>
+          <family>Yuppy SC</family>
+         </font>
+        </property>
+        <property name="text">
+         <string>增加</string>
+        </property>
+        <property name="autoRepeat">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radioButton_liter2">
+        <property name="font">
+         <font>
+          <family>Yuppy SC</family>
+         </font>
+        </property>
+        <property name="text">
+         <string>删除</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="3" column="2">
+     <layout class="QHBoxLayout" name="horizontalLayout_11">
+      <item>
+       <widget class="QRadioButton" name="radioButton_lr1">
+        <property name="font">
+         <font>
+          <family>Yuppy SC</family>
+         </font>
+        </property>
+        <property name="text">
+         <string>增加</string>
+        </property>
+        <property name="autoRepeat">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radioButton_lr2">
+        <property name="font">
+         <font>
+          <family>Yuppy SC</family>
+         </font>
+        </property>
+        <property name="text">
+         <string>删除</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="8" column="0">
+     <widget class="QLabel" name="label_lstm_layer">
+      <property name="font">
+       <font>
+        <family>Yuppy SC</family>
+        <pointsize>18</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel{
+background-color:rgb(242, 249, 255);
+}</string>
+      </property>
+      <property name="text">
+       <string>LSTM_LAYER可选值</string>
+      </property>
+      <property name="textFormat">
+       <enum>Qt::AutoText</enum>
+      </property>
+      <property name="wordWrap">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="1">
+     <widget class="QLineEdit" name="lineEdit_lstm_layer">
+      <property name="styleSheet">
+       <string notr="true">QLineEdit{
+background-color:rgb(242, 249, 255);
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="2">
+     <layout class="QHBoxLayout" name="horizontalLayout_16">
+      <item>
+       <widget class="QRadioButton" name="radioButton_lstm_layer1">
+        <property name="font">
+         <font>
+          <family>Yuppy SC</family>
+         </font>
+        </property>
+        <property name="text">
+         <string>增加</string>
+        </property>
+        <property name="autoRepeat">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radioButton_lstm_layer2">
+        <property name="font">
+         <font>
+          <family>Yuppy SC</family>
+         </font>
+        </property>
+        <property name="text">
+         <string>删除</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="8" column="3">
+     <widget class="QTextBrowser" name="textBrowser_showlstm_layer">
+      <property name="styleSheet">
+       <string notr="true">textBrowser_2{
+background-color:rgb(242, 249, 255);
+}</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Panel</enum>
+      </property>
+      <property name="lineWidth">
+       <number>3</number>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="3">
+     <widget class="QTextBrowser" name="textBrowser_show_nn_layer">
+      <property name="styleSheet">
+       <string notr="true">textBrowser_2{
+background-color:rgb(242, 249, 255);
+}</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Panel</enum>
+      </property>
+      <property name="lineWidth">
+       <number>3</number>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="1">
+     <widget class="QLineEdit" name="lineEdit_iter">
+      <property name="styleSheet">
+       <string notr="true">QLineEdit{
+background-color:rgb(242, 249, 255);
+}</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="0">
+     <widget class="QLabel" name="label_iter">
+      <property name="font">
+       <font>
+        <family>STHeiti</family>
+        <pointsize>18</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel{
+background-color:rgb(242, 249, 255);
+}</string>
+      </property>
+      <property name="text">
+       <string>N_ITER可选值</string>
+      </property>
+      <property name="textFormat">
+       <enum>Qt::AutoText</enum>
+      </property>
+      <property name="wordWrap">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="3">
+     <widget class="QTextBrowser" name="textBrowser_keep_prob_lstm">
+      <property name="styleSheet">
+       <string notr="true">textBrowser_2{
+background-color:rgb(242, 249, 255);
+}</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Panel</enum>
+      </property>
+      <property name="lineWidth">
+       <number>3</number>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="0">
+     <widget class="QLabel" name="label_lr_2">
+      <property name="font">
+       <font>
+        <family>Yuppy SC</family>
+        <pointsize>18</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel{
+background-color:rgb(242, 249, 255);
+}</string>
+      </property>
+      <property name="text">
+       <string>KEEP_PROB_LSTM</string>
+      </property>
+      <property name="textFormat">
+       <enum>Qt::AutoText</enum>
+      </property>
+      <property name="wordWrap">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="3">
+     <widget class="QTextBrowser" name="textBrowser_showcellsize">
+      <property name="styleSheet">
+       <string notr="true">textBrowser_2{
+background-color:rgb(242, 249, 255);
+}</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Panel</enum>
+      </property>
+      <property name="lineWidth">
+       <number>3</number>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="2">
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QRadioButton" name="radioButton_batch1">
+        <property name="font">
+         <font>
+          <family>Yuppy SC</family>
+         </font>
+        </property>
+        <property name="text">
+         <string>增加</string>
+        </property>
+        <property name="autoRepeat">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radioButton_batch2">
+        <property name="font">
+         <font>
+          <family>Yuppy SC</family>
+         </font>
+        </property>
+        <property name="text">
+         <string>删除</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="2" column="1">
+     <widget class="QLineEdit" name="lineEdit_cellsize">
+      <property name="styleSheet">
+       <string notr="true">QLineEdit{
+background-color:rgb(242, 249, 255);
+}</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="label_cellsize">
+      <property name="font">
+       <font>
+        <family>STHeiti</family>
+        <pointsize>18</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel{
+background-color:rgb(242, 249, 255);
+}</string>
+      </property>
+      <property name="text">
+       <string>CELLSIZE可选值</string>
+      </property>
+      <property name="textFormat">
+       <enum>Qt::AutoText</enum>
+      </property>
+      <property name="wordWrap">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="2">
+     <layout class="QHBoxLayout" name="horizontalLayout_10">
+      <item>
+       <widget class="QRadioButton" name="radioButton_cellsize1">
+        <property name="font">
+         <font>
+          <family>Yuppy SC</family>
+         </font>
+        </property>
+        <property name="text">
+         <string>增加</string>
+        </property>
+        <property name="autoRepeat">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radioButton_cellsize2">
+        <property name="font">
+         <font>
+          <family>Yuppy SC</family>
+         </font>
+        </property>
+        <property name="text">
+         <string>删除</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="1" column="3">
+     <widget class="QTextBrowser" name="textBrowser_showtimesteps">
+      <property name="styleSheet">
+       <string notr="true">textBrowser_2{
+background-color:rgb(242, 249, 255);
+}</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Panel</enum>
+      </property>
+      <property name="lineWidth">
+       <number>3</number>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="3">
+     <widget class="QTextBrowser" name="textBrowser_showbatch">
+      <property name="styleSheet">
+       <string notr="true">textBrowser_2{
+background-color:rgb(242, 249, 255);
+}</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Panel</enum>
+      </property>
+      <property name="lineWidth">
+       <number>3</number>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QLabel" name="label_batch">
+      <property name="font">
+       <font>
+        <family>STHeiti</family>
+        <pointsize>18</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel{
+background-color:rgb(242, 249, 255);
+}</string>
+      </property>
+      <property name="text">
+       <string>BATCH可选值</string>
+      </property>
+      <property name="textFormat">
+       <enum>Qt::AutoText</enum>
+      </property>
+      <property name="wordWrap">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QLineEdit" name="lineEdit_timesteps">
+      <property name="styleSheet">
+       <string notr="true">QLineEdit{
+background-color:rgb(242, 249, 255);
+}</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="label_timesteps">
+      <property name="font">
+       <font>
+        <family>STHeiti</family>
+        <pointsize>18</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel{
+background-color:rgb(242, 249, 255);
+}</string>
+      </property>
+      <property name="text">
+       <string>TIMESTEPS可选值</string>
+      </property>
+      <property name="textFormat">
+       <enum>Qt::AutoText</enum>
+      </property>
+      <property name="wordWrap">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="2">
+     <layout class="QHBoxLayout" name="horizontalLayout_9">
+      <item>
+       <widget class="QRadioButton" name="radioButton_timesteps1">
+        <property name="font">
+         <font>
+          <family>Yuppy SC</family>
+         </font>
+        </property>
+        <property name="text">
+         <string>增加</string>
+        </property>
+        <property name="autoRepeat">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radioButton_timesteps2">
+        <property name="font">
+         <font>
+          <family>Yuppy SC</family>
+         </font>
+        </property>
+        <property name="text">
+         <string>删除</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="5" column="2">
+     <layout class="QHBoxLayout" name="horizontalLayout_13">
+      <item>
+       <widget class="QRadioButton" name="radioButton_kpnn1">
+        <property name="font">
+         <font>
+          <family>Yuppy SC</family>
+         </font>
+        </property>
+        <property name="text">
+         <string>增加</string>
+        </property>
+        <property name="autoRepeat">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radioButton_kpnn2">
+        <property name="font">
+         <font>
+          <family>Yuppy SC</family>
+         </font>
+        </property>
+        <property name="text">
+         <string>删除</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="7" column="2">
+     <layout class="QHBoxLayout" name="horizontalLayout_15">
+      <item>
+       <widget class="QRadioButton" name="radioButton_nn_layer1">
+        <property name="font">
+         <font>
+          <family>Yuppy SC</family>
+         </font>
+        </property>
+        <property name="text">
+         <string>增加</string>
+        </property>
+        <property name="autoRepeat">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radioButton_nn_layer2">
+        <property name="font">
+         <font>
+          <family>Yuppy SC</family>
+         </font>
+        </property>
+        <property name="text">
+         <string>删除</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="0" column="1">
+     <widget class="QLineEdit" name="lineEdit_batch">
+      <property name="styleSheet">
+       <string notr="true">QLineEdit{
+background-color:rgb(242, 249, 255);
+}</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="1">
+     <widget class="QLineEdit" name="lineEdit_lr">
+      <property name="styleSheet">
+       <string notr="true">QLineEdit{
+background-color:rgb(242, 249, 255);
+}</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="1">
+     <widget class="QLineEdit" name="lineEdit_keepprob_nn">
+      <property name="styleSheet">
+       <string notr="true">QLineEdit{
+background-color:rgb(242, 249, 255);
+}</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="3">
+     <widget class="QTextBrowser" name="textBrowser_showiter">
+      <property name="styleSheet">
+       <string notr="true">textBrowser_2{
+background-color:rgb(242, 249, 255);
+}</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Panel</enum>
+      </property>
+      <property name="lineWidth">
+       <number>3</number>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="1">
+     <widget class="QLineEdit" name="lineEdit_kplstm">
+      <property name="styleSheet">
+       <string notr="true">QLineEdit{
+background-color:rgb(242, 249, 255);
+}</string>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="0">
+     <widget class="QLabel" name="label_nn_layer">
+      <property name="font">
+       <font>
+        <family>Yuppy SC</family>
+        <pointsize>18</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel{
+background-color:rgb(242, 249, 255);
+}</string>
+      </property>
+      <property name="text">
+       <string>NN_LAYER可选值</string>
+      </property>
+      <property name="textFormat">
+       <enum>Qt::AutoText</enum>
+      </property>
+      <property name="wordWrap">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="3">
+     <widget class="QTextBrowser" name="textBrowser_showtlr">
+      <property name="styleSheet">
+       <string notr="true">textBrowser_2{
+background-color:rgb(242, 249, 255);
+}</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Panel</enum>
+      </property>
+      <property name="lineWidth">
+       <number>3</number>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="0">
+     <widget class="QLabel" name="label_keep_prob_nn">
+      <property name="font">
+       <font>
+        <family>STHeiti</family>
+        <pointsize>18</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel{
+background-color:rgb(242, 249, 255);
+}</string>
+      </property>
+      <property name="text">
+       <string>KEEP_PROB_NN</string>
+      </property>
+      <property name="textFormat">
+       <enum>Qt::AutoText</enum>
+      </property>
+      <property name="wordWrap">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QLabel" name="label_lr">
+      <property name="font">
+       <font>
+        <family>STHeiti</family>
+        <pointsize>18</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel{
+background-color:rgb(242, 249, 255);
+}</string>
+      </property>
+      <property name="text">
+       <string>L_RATE可选值</string>
+      </property>
+      <property name="textFormat">
+       <enum>Qt::AutoText</enum>
+      </property>
+      <property name="wordWrap">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="3">
+     <widget class="QTextBrowser" name="textBrowser_showkpnn">
+      <property name="styleSheet">
+       <string notr="true">textBrowser_2{
+background-color:rgb(242, 249, 255);
+}</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Panel</enum>
+      </property>
+      <property name="lineWidth">
+       <number>3</number>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="1">
+     <widget class="QLineEdit" name="lineEdit_nn_layer">
+      <property name="styleSheet">
+       <string notr="true">QLineEdit{
+background-color:rgb(242, 249, 255);
+}</string>
+      </property>
+     </widget>
+    </item>
+    <item row="9" column="0">
+     <widget class="QLabel" name="label_lstm_output">
+      <property name="font">
+       <font>
+        <family>Yuppy SC</family>
+        <pointsize>18</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel{
+background-color:rgb(242, 249, 255);
+}</string>
+      </property>
+      <property name="text">
+       <string>LSTM_OUTPUT可选值</string>
+      </property>
+      <property name="textFormat">
+       <enum>Qt::AutoText</enum>
+      </property>
+      <property name="wordWrap">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="10" column="0">
+     <widget class="QLabel" name="label_nn_cellsize">
+      <property name="font">
+       <font>
+        <family>Yuppy SC</family>
+        <pointsize>18</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel{
+background-color:rgb(242, 249, 255);
+}</string>
+      </property>
+      <property name="text">
+       <string>NN_CELLSIZE可选值</string>
+      </property>
+      <property name="textFormat">
+       <enum>Qt::AutoText</enum>
+      </property>
+      <property name="wordWrap">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="9" column="1">
+     <widget class="QLineEdit" name="lineEdit_lstm_output">
+      <property name="styleSheet">
+       <string notr="true">QLineEdit{
+background-color:rgb(242, 249, 255);
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item row="10" column="1">
+     <widget class="QLineEdit" name="lineEdit_nn_cellsize">
+      <property name="styleSheet">
+       <string notr="true">QLineEdit{
+background-color:rgb(242, 249, 255);
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item row="9" column="2">
+     <layout class="QHBoxLayout" name="horizontalLayout_17">
+      <item>
+       <widget class="QRadioButton" name="radioButton_lstm_output1">
+        <property name="font">
+         <font>
+          <family>Yuppy SC</family>
+         </font>
+        </property>
+        <property name="text">
+         <string>增加</string>
+        </property>
+        <property name="autoRepeat">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radioButton_lstm_output2">
+        <property name="font">
+         <font>
+          <family>Yuppy SC</family>
+         </font>
+        </property>
+        <property name="text">
+         <string>删除</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="10" column="2">
+     <layout class="QHBoxLayout" name="horizontalLayout_18">
+      <item>
+       <widget class="QRadioButton" name="radioButton_nn_cellsize1">
+        <property name="font">
+         <font>
+          <family>Yuppy SC</family>
+         </font>
+        </property>
+        <property name="text">
+         <string>增加</string>
+        </property>
+        <property name="autoRepeat">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radioButton_nn_cellsize2">
+        <property name="font">
+         <font>
+          <family>Yuppy SC</family>
+         </font>
+        </property>
+        <property name="text">
+         <string>删除</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="9" column="3">
+     <widget class="QTextBrowser" name="textBrowser_showlstm_output">
+      <property name="styleSheet">
+       <string notr="true">textBrowser_2{
+background-color:rgb(242, 249, 255);
+}</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Panel</enum>
+      </property>
+      <property name="lineWidth">
+       <number>3</number>
+      </property>
+     </widget>
+    </item>
+    <item row="10" column="3">
+     <widget class="QTextBrowser" name="textBrowser_show_nn_cellsize">
+      <property name="styleSheet">
+       <string notr="true">textBrowser_2{
+background-color:rgb(242, 249, 255);
+}</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Panel</enum>
+      </property>
+      <property name="lineWidth">
+       <number>3</number>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QComboBox" name="comboBox_data">
+   <property name="geometry">
+    <rect>
+     <x>230</x>
+     <y>120</y>
+     <width>351</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>STHeiti</family>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QComboBox{
+background-color:rgb(242, 249, 255);
+}</string>
+   </property>
+   <item>
+    <property name="text">
+     <string>茅台</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>同花顺</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>万科</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>振业</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>原野</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>锦兴</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>金田</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>发展</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>达声</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>宝安</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>安达</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QPushButton" name="pushButton_3">
+   <property name="geometry">
+    <rect>
+     <x>470</x>
+     <y>70</y>
+     <width>111</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Andale Mono</family>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+background-color:rgb(242, 249, 255);
+}</string>
+   </property>
+   <property name="text">
+    <string>开始自动调参</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_data">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>120</y>
+     <width>121</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>STHeiti</family>
+     <pointsize>18</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+background-color:rgb(242, 249, 255);
+}</string>
+   </property>
+   <property name="text">
+    <string>选择数据集</string>
+   </property>
+   <property name="textFormat">
+    <enum>Qt::AutoText</enum>
+   </property>
+   <property name="wordWrap">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="groupBox">
+   <property name="geometry">
+    <rect>
+     <x>640</x>
+     <y>170</y>
+     <width>571</width>
+     <height>301</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>best prediction</string>
+   </property>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>0</y>
+      <width>241</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{
+color:white;
+}</string>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;预测：black    真实：red&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QLabel" name="label_restore">
+   <property name="geometry">
+    <rect>
+     <x>640</x>
+     <y>120</y>
+     <width>111</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>STHeiti</family>
+     <pointsize>18</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+background-color:rgb(242, 249, 255);
+}</string>
+   </property>
+   <property name="text">
+    <string>模型读取位置</string>
+   </property>
+   <property name="textFormat">
+    <enum>Qt::AutoText</enum>
+   </property>
+   <property name="wordWrap">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_restore">
+   <property name="geometry">
+    <rect>
+     <x>780</x>
+     <y>120</y>
+     <width>431</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Weibei SC</family>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit{
+background-color:rgb(242, 249, 255);
+}</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_save">
+   <property name="geometry">
+    <rect>
+     <x>640</x>
+     <y>60</y>
+     <width>111</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>STHeiti</family>
+     <pointsize>18</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::LeftToRight</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+background-color:rgb(242, 249, 255);
+}</string>
+   </property>
+   <property name="text">
+    <string>模型存储位置</string>
+   </property>
+   <property name="textFormat">
+    <enum>Qt::PlainText</enum>
+   </property>
+   <property name="wordWrap">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_save">
+   <property name="geometry">
+    <rect>
+     <x>780</x>
+     <y>60</y>
+     <width>431</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Yuppy SC</family>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit{
+background-color:rgb(242, 249, 255);
+}</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
